@@ -1,0 +1,18 @@
+<li>
+  <article class="wrapper">
+    <header>
+      <h2>{{ post.title }}</h2>
+      {{ post.loveIts }}
+    </header>
+    <main>
+      {{ post.content }}
+    </main>
+    <aside>
+        <button class="btn btn-success">J'aime</button>
+        <button class="btn btn-danger">Je n'aime pas</button>
+    </aside>
+    <footer>
+      By {{ post.author.name }} on {{ post.created_at }}
+    </footer>
+  </article>
+</li>
