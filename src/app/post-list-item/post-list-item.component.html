@@ -8,8 +8,8 @@
       {{ post.content }}
     </main>
     <aside>
-        <button class="btn btn-success">J'aime</button>
-        <button class="btn btn-danger">Je n'aime pas</button>
+        <button class="btn btn-success" (click)="increaseLike()">J'aime</button>
+        <button class="btn btn-danger" (click)="decreaseLike()">Je n'aime pas</button>
     </aside>
     <footer>
       By {{ post.author.name }} on {{ post.created_at }}
