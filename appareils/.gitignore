@@ -1,16 +1,16 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-blog/dist
-blog/dist-server
-blog/tmp
-blog/out-tsc
+/dist
+/dist-server
+/tmp
+/out-tsc
 
 # dependencies
-blog/node_modules
+/node_modules
 
 # IDEs and editors
-blog/.idea
+/.idea
 .project
 .classpath
 .c9/
