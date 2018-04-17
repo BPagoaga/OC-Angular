@@ -18,8 +18,16 @@ export class PostListItemComponent implements OnInit {
   }
 
   decreaseLike() {
-    if (this.post.loveIts !== 0) {
-      this.post.loveIts -= 1;
+    this.post.loveIts -= 1;
+  }
+
+  getBcg() {
+    if (this.post.loveIts > 0) {
+      return "green";
+    } else if (this.post.loveIts < 0) {
+      return "red";
     }
+
+    return "";
   }
 }
