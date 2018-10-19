@@ -1,0 +1,9 @@
+<div class="well">
+  <form [formGroup]="postForm" (ngSubmit)="onSavePost()">
+    <input type="text" formControlName="title">
+    <input type="text" formControlName="author">
+    <input type="text" formControlName="content">
+
+    <button [disabled]="postForm.invalid " type="submit">Enregistrer</button>
+  </form>
+</div>

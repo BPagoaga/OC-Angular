@@ -10,9 +10,10 @@
     <aside>
         <button class="btn btn-success" (click)="increaseLike()">J'aime</button>
         <button class="btn btn-danger" (click)="decreaseLike()">Je n'aime pas</button>
+        <button class="btn btn-danger" (click)="onDeletePost(post)">Supprimer</button>
     </aside>
     <footer>
-      By {{ post.author.name }} on {{ post.created_at }}
+      By {{ post.author }} on {{ post.created_at }}
     </footer>
   </article>
 </li>

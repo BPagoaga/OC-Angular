@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { Post } from "../post";
+import { Post } from "../models/post";
+import { PostsService } from "../services/posts.service";
 
 @Component({
   selector: "app-post-list-item",
@@ -7,9 +8,10 @@ import { Post } from "../post";
   styleUrls: ["./post-list-item.component.scss"]
 })
 export class PostListItemComponent implements OnInit {
-  @Input() post: Post;
+  @Input()
+  post: Post;
 
-  constructor() {}
+  constructor(private postService: PostsService) {}
 
   ngOnInit() {}
 
@@ -29,5 +31,9 @@ export class PostListItemComponent implements OnInit {
     }
 
     return "";
+  }
+
+  onDeletePost(post: Post) {
+    this.postService.removePost(post);
   }
 }

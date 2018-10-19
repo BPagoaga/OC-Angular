@@ -1,6 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { Post } from "../post";
-import { User } from "../user";
+import { Post } from "../models/post";
+import { User } from "../models/user";
+import { PostsService } from "../services/posts.service";
+import { Subscriber, Subscription } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-post-list",
@@ -8,23 +12,42 @@ import { User } from "../user";
   styleUrls: ["./post-list.component.scss"]
 })
 export class PostListComponent implements OnInit {
-  posts: object[] = [];
+  posts: Post[] = [];
+  postsSubscription: Subscription;
 
-  constructor() {}
+  constructor(
+    private postService: PostsService,
+    private http: HttpClient,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then(data => data.json())
-      .then(json => {
-        json.map(post => {
-          fetch(`https://jsonplaceholder.typicode.com/users/${post.userId}`)
-            .then(data => data.json())
-            .then(user => new User(user))
-            .then(user => {
-              post.author = user;
-              this.posts.push(new Post(post));
+    this.postsSubscription = this.postService.postsSubject.subscribe(
+      (posts: any) => {
+        posts.map(post => {
+          this.http
+            .get(`https://jsonplaceholder.typicode.com/users/${post.userId}`)
+            .subscribe((user: User) => {
+              this.posts.push(
+                new Post({
+                  title: post.title,
+                  body: post.body,
+                  author: user.name
+                })
+              );
             });
         });
-      });
+      }
+    );
+    this.postService.emitPosts();
+  }
+
+  onNewPost() {
+    console.log("navigate");
+    this.router.navigate(["/new"]);
+  }
+
+  ngOnDestroy() {
+    this.postsSubscription.unsubscribe();
   }
 }

@@ -1,4 +1,5 @@
 <ul class="list-group">
+  <button class="btn btn-primary" (click)="onNewPost()">Ajouter</button>
   <app-post-list-item *ngFor="let post of posts"
     [post]="post"
     ></app-post-list-item>
