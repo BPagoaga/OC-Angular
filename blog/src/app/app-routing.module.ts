@@ -9,11 +9,11 @@ const appRoutes: Routes = [
     component: PostListComponent
   },
   {
-    path: "new",
+    path: "posts",
     component: PostFormComponent
   },
-  { path: "", redirectTo: "books", pathMatch: "full" },
-  { path: "**", redirectTo: "books" }
+  { path: "", redirectTo: "posts", pathMatch: "full" },
+  { path: "**", redirectTo: "posts" }
 ];
 
 @NgModule({

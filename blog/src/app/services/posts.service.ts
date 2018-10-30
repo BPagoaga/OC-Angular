@@ -1,30 +1,22 @@
 import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { Post } from "../models/post";
-import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root"
 })
 export class PostsService {
-  posts: Post[] = [];
+  private posts: Post[] = [];
   postsSubject = new Subject<Post[]>();
 
-  constructor(private http: HttpClient) {
-    this.getPosts();
-  }
+  constructor() {}
 
   emitPosts() {
-    this.postsSubject.next(this.posts);
+    this.postsSubject.next(this.posts.slice());
   }
 
   getPosts() {
-    return this.http
-      .get("https://jsonplaceholder.typicode.com/posts")
-      .subscribe((posts: Post[]) => {
-        this.posts = posts;
-        this.emitPosts();
-      });
+    return this.posts;
   }
 
   removePost(post: Post) {

@@ -1,9 +1,16 @@
-<div class="well">
-  <form [formGroup]="postForm" (ngSubmit)="onSavePost()">
-    <input type="text" formControlName="title">
-    <input type="text" formControlName="author">
-    <input type="text" formControlName="content">
+<form [formGroup]="postForm" (ngSubmit)="onSavePost()">
+  <div class="form-group">
+    <label for="titre">Titre</label>
+    <input type="text" class="form-control" id="titre" placeholder="Enter title" formControlName="title">
+  </div>
+  <div class="form-group">
+    <label for="author">Auteur</label>
+    <input type="text" class="form-control" id="author" placeholder="Auteur" formControlName="author">
+  </div>
+  <div class="form-group">
+    <textarea class="form-control" id="content" formControlName="content"></textarea>
+    <label for="content">Contenu</label>
+  </div>
 
-    <button [disabled]="postForm.invalid " type="submit">Enregistrer</button>
-  </form>
-</div>
+  <button [disabled]="!postForm.valid" type="submit" class="btn btn-primary">Enregistrer</button>
+</form>

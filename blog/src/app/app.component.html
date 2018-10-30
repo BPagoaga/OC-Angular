@@ -1,9 +1,27 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<header>
-  <h1>
-    {{ title }}
-  </h1>
-</header>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <h1 class="navbar-brand">
+            <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              {{ title }}
+            </a>
+          </h1>
 
-<router-outlet></router-outlet>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/new" routerLinkActive="active">Add Post <span class="sr-only">(current)</span></a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </div>
+  </div>
+</div>
 
