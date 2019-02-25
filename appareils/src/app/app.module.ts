@@ -12,6 +12,7 @@ import { Routes } from "@angular/router";
 import { AuthService } from "./services/auth.service";
 import { SingleAppareilComponent } from "./single-appareil/single-appareil.component";
 import { FourOhFourComponent } from "./four-oh-four/four-oh-four.component";
+import { ChildComponentComponent } from './child-component/child-component.component';
 
 const appRoutes: Routes = [
   { path: "appareils", component: AppareilViewComponent },
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
     AuthComponent,
     AppareilViewComponent,
     SingleAppareilComponent,
-    FourOhFourComponent
+    FourOhFourComponent,
+    ChildComponentComponent
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
   providers: [AppareilService, AuthService],
